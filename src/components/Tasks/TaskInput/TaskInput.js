@@ -1,45 +1,47 @@
 import React, { useState } from "react";
 
 import Button from "../../UI/Button/Button";
-import "./TaskInput.css";
+// import "./TaskInput.css";
 
-import styled from "styled-components";
+// import styled from "styled-components";
 
-const FormControl = styled.div`
-  margin: 0.5rem 0;
+import styles from "./TaskInput.module.css";
 
-  & label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 0.5rem;
-    color: ${(props) => props.valid ? 'red' : 'black'};
-  }
+// const FormControl = styled.div`
+//   margin: 0.5rem 0;
 
-  & input {
-    display: block;
-    width: 100%;
-    border: 1px solid ${props => props.valid ? 'red' : 'black'};
-    font: inherit;
-    line-height: 1.5rem;
-    padding: 0 0.25rem;
-    background-color: ${props => props.valid ? '#ea8e8e' : 'transparent'};
-  }
+//   & label {
+//     font-weight: bold;
+//     display: block;
+//     margin-bottom: 0.5rem;
+//     color: ${(props) => props.valid ? 'red' : 'black'};
+//   }
 
-  & input:focus {
-    outline: none;
-    background: #c8e1e4;
-    border-color: #00358b;
-  }
+//   & input {
+//     display: block;
+//     width: 100%;
+//     border: 1px solid ${props => props.valid ? 'red' : 'black'};
+//     font: inherit;
+//     line-height: 1.5rem;
+//     padding: 0 0.25rem;
+//     background-color: ${props => props.valid ? '#ea8e8e' : 'transparent'};
+//   }
 
-  // &.invalid input {
-  //   border-color: red;
-  //   background: #ea8e8e;
-  // }
+//   & input:focus {
+//     outline: none;
+//     background: #c8e1e4;
+//     border-color: #00358b;
+//   }
 
-  // &.invalid label {
-  //   color: red;
-  // }
-`;
+//   // &.invalid input {
+//   //   border-color: red;
+//   //   background: #ea8e8e;
+//   // }
+
+//   // &.invalid label {
+//   //   color: red;
+//   // }
+// `;
 
 const TaskInput = (props) => {
   const [inputText, setInputText] = useState("");
@@ -70,10 +72,16 @@ const TaskInput = (props) => {
         <input type="text" style={{'border-color': !isInputValid ? 'red' : 'black', background : !isInputValid ? 'salmon' : 'transparent'}} onChange={taskInputChangeHandler} /> */}
       {/* <div className={`form-control ${!isInputValid ? "invalid" : ""}`}> */}
       {/* <FormControl className={!isInputValid && 'invalid' }> */}
-      <FormControl valid={!isInputValid}>
+      {/* <FormControl valid={!isInputValid}>
         <label>Задачи</label>
         <input type="text" onChange={taskInputChangeHandler} />
-      </FormControl>
+      </FormControl> */}
+
+      <div className={`${styles['form-control']} ${!isInputValid && styles.invalid}`}>
+        <label>Задачи</label>
+        <input type="text" onChange={taskInputChangeHandler} />
+      </div>
+
       {/* </div> */}
       <Button type="submit">Добавить Задачу</Button>
     </form>
